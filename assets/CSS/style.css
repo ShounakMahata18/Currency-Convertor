@@ -4,13 +4,27 @@
     font-family: sans-serif;
 }
 
-body {
-    background-image: url('bg.jpg');
+
+/* input number increment and decrement button */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+body{
+    height: 100vh;
+    height: 100svh;
+    width: 100vw;
+    width: 100svw;
+}
+
+main {
+    height: calc(100vh - 100px);
+    height: calc(100svh - 100px);
+    background-image: url('../Image/bg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    height: calc(100vh - 100px);
-    width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,6 +82,7 @@ form input {
 
 .dropdown > button{
     width: 2rem;
+    height: 2rem;
     margin-top: 1rem;
     background: none;
     cursor: pointer;
@@ -78,13 +93,19 @@ form input {
     background: none;
 }
 
+.location {
+    width: calc(50% - 2rem);
+}
+
+.location > p{
+    display: inline-block;
+}
+
 .select-container{
-    height: 2rem;
+    height: auto;
+    width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding-left: 0.3rem;
-    width: 7.5rem;
     border-radius: 0.25rem;
 
 }
@@ -96,12 +117,11 @@ form input {
 
 .select-container > select {
     font-size: 1rem;
-    width: 5rem;
+    width: auto;
     height: 1.9rem;
     border: none;
     appearance: none;
-    padding: 0 10px;
-    box-sizing: border-box;
+    padding: 0 20px;
 }
 
 .select-container > select > option{
@@ -178,8 +198,6 @@ form button {
 footer{
     width: 100vw;
     height: 100px;
-    position: absolute;
-    bottom: 0;
     background-color: #000;
 }
 
@@ -211,8 +229,8 @@ footer{
 }
 
 .social > a > svg{
-    height: 30px;
-    width: 30px;
+    height: 2rem;
+    width: 2rem;
 }
 
 .legal{
@@ -233,29 +251,55 @@ footer{
 
 
 @media (max-width: 600px) {
+    .legal a{
+        font-size: 0.7rem;
+    }
+
+    .social > a > svg{
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+}
+
+@media (max-width: 380px) {
     button {
         -webkit-tap-highlight-color: transparent;
     }
-    body {
-        max-height: 90vh;
-    }
     .container{
-        margin-bottom: 100px;
-        min-width: 80vw;
+        min-width: 70%;
+    }
+
+    .location{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     
-    input:focus + .container {
-        margin-top: -100px;
-        color: #000;
+    .select-container {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
+
+    .select-container select{
+        text-align: center;
+        padding: 0 10px;
+    }
+
     .proj-details{
         width: 95%;
     }
     .social > a > svg{
-        height: 25px;
-        width: 25px;
+        height: 1.5rem;
+        width: 1.5rem;
     }
     .legal a{
-        font-size: 0.9rem;
+        font-size: 0.6rem;
+    }
+}
+
+@media (max-width: 280px) {
+    .legal a{
+        display: none;
     }
 }

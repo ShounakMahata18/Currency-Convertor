@@ -1,47 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currency Convertor</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="currency.js" defer></script>
-    <script src="app.js" defer></script>
+    <link rel="stylesheet" href="./assets/CSS/style.css">
+    <script src="./assets/JS/currency.js" defer></script>
+    <script src="./assets/JS/app.js" defer></script>
 </head>
+
 <body>
-    <div class="container">
-        <h2>Currency Convertor</h2>
-        <form>
-            <div class="amount">
-                <p>Enter Amount</p>
-                <input value="1" type="text">
-            </div>
-            <div class="dropdown">
-                <div class="from">
-                    <p>From</p>
-                    <div class="select-container from-child">
-                        <img src="https://flagsapi.com/US/flat/64.png" alt="">
-                        <select name="from"></select>
+    <main>
+
+        <div class="container">
+            <h2>Currency Convertor</h2>
+            <form>
+                <div class="amount">
+                    <p>Enter Amount</p>
+                    <input value="1" type="number">
+                </div>
+                <div class="dropdown">
+                    <div class="from location">
+                        <p>From</p>
+                        <div class="select-container from-child">
+                            <img src="https://flagsapi.com/US/flat/64.png" alt="">
+                            <select name="from"></select>
+                        </div>
+                    </div>
+                    <button>
+                        <svg viewBox="0 0 24 24" id="exchange" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg"
+                            class="icon flat-line">
+                            <polyline id="primary" points="7 17 4 14 20 14"
+                                style="fill: none; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;">
+                            </polyline>
+                            <polyline id="primary-2" data-name="primary" points="17 7 20 10 4 10"
+                                style="fill: none; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;">
+                            </polyline>
+                        </svg>
+                    </button>
+                    <div class="to location">
+                        <p>To</p>
+                        <div class="select-container to-child">
+                            <img src="https://flagsapi.com/IN/flat/64.png" alt="">
+                            <select name="to"></select>
+                        </div>
                     </div>
                 </div>
-                <button>
-                    <svg viewBox="0 0 24 24" id="exchange" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line"><polyline id="primary" points="7 17 4 14 20 14" style="fill: none; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"></polyline><polyline id="primary-2" data-name="primary" points="17 7 20 10 4 10" style="fill: none; stroke: rgb(255, 255, 255); stroke-linecap: round; stroke-linejoin: round; stroke-width: 1;"></polyline></svg>
-                </button>
-                <div class="to">
-                    <p>To</p>
-                    <div class="select-container to-child">
-                        <img src="https://flagsapi.com/IN/flat/64.png" alt="">
-                        <select name="to"></select>
-                    </div>
+                <div class="show">
+                    <p class="conversion"></p>
+                    <button class="glow-on-hover">Exchange Rate</button>
                 </div>
-            </div>
-            <div class="show">
-                <p class="conversion"></p>
-                <button class="glow-on-hover">Exchange Rate</button>
-            </div>
-        </form>
-    </div>
-</body>
+            </form>
+        </div>
+    </main>
+
 
     <footer>
         <div class="proj-details">
@@ -83,9 +96,9 @@
                         </svg>
                     </a>
 
-                    <a href="https://www.linkedin.com/in/shounakmahata" target ="_blank">
-                        <svg viewBox="0 0 20 20" version="1.1"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <a href="https://www.linkedin.com/in/shounakmahata" target="_blank">
+                        <svg viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink">
                             <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g id="Dribbble-Light-Preview" transform="translate(-180.000000, -7479.000000)"
                                     fill="#ffffff">
@@ -124,9 +137,11 @@
                 <div class="legal">
                     <a href="#">@Github Repo</a>
                     <a href="mailto:shounakmahata18@gmail.com" target="_blank">shounakmahata18@gmail.com</a>
-                    
+
                 </div>
             </div>
         </div>
     </footer>
+</body>
+
 </html>

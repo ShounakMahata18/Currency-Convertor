@@ -107,6 +107,8 @@ change.addEventListener("click", (event) => {
     }
 });
 
+// -------------------Find exchange rate-------------------
+
 let submitBtn = document.querySelector(".show button");
 submitBtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -150,3 +152,24 @@ function getExchangeRate(){
         });
     }
 }
+
+// ------------------enter keypress map------------------
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        submitBtn.click();
+        var buttons = document.querySelectorAll('button');
+        buttons.forEach(function (button) {
+            if (button.id !== submitBtn) {
+                button.disabled = true;
+            }
+        });
+        getExchangeRate();
+        setTimeout(() => {
+            buttons.forEach(function (button) {
+                if (button.id !== submitBtn) {
+                    button.disabled = false;
+                }
+            });
+        },100);
+    }
+});
