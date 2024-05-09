@@ -259,6 +259,9 @@ footer{
         height: 1.5rem;
         width: 1.5rem;
     }
+    .proj-details{
+        width: 90%;
+    }
 }
 
 @media (max-width: 380px) {
