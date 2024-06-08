@@ -4,6 +4,7 @@ let massage = "";
 let fromPart = "";
 let toPart = "";
 let lastInput = "";
+let data;
 
 const dropdowns = document.querySelectorAll(".dropdown select");
 
@@ -47,6 +48,7 @@ function defaultConversion (){
     let amountValue = amount.value;
     let apiUrl = `${baseUrl}${defaultFrom}`;
     fetch(apiUrl).then(response => response.json()).then((value) => {
+        data = value;
         let fromCountry = countryList[defaultFrom];
         let toCountry = countryList[defaultTo];
 
@@ -130,10 +132,41 @@ function getExchangeRate(){
     let apiUrl = `${baseUrl}${fromCountryCode.value}`;
 
     //if the selected value will give same value as the ouput massage then do not fetch api to reduce unwanted multiple api call
+    if(lastInput != latestAmount && toPart == newToCountryCodeValue && fromPart == newFromCountryCodeValue){
+        let fromCountry = countryList[fromCountryCode.value];
+        let toCountry = countryList[toCountryCode.value];
 
-    if(fromPart != newFromCountryCodeValue || toPart != newToCountryCodeValue || lastInput != latestAmount){
-        console.log("fetching data...");
+        let formattedFromNumber = parseFloat(amountValue);
+        formattedFromNumber = formattedFromNumber.toLocaleString(`en-${fromCountry}`, {maximumFractionDigits: 2 });
+
+        let exchangeRate = data.conversion_rates[toCountryCode.value];
+        let totalExchangeValue = parseFloat(amountValue * exchangeRate);
+        let formattedToNumber = totalExchangeValue.toLocaleString(`en-${toCountry}`, {maximumFractionDigits: 2 });
+        
+        conversionMassage.innerText = `${formattedFromNumber} ${fromCountryCode.value} = ${formattedToNumber} ${toCountryCode.value}`;
+        massage = conversionMassage.innerText;
+        getPreviousMassageCurrencytype();
+        console.log("changing");
+    }
+    else if(toPart != newToCountryCodeValue && fromPart == newFromCountryCodeValue) {
+        let fromCountry = countryList[fromCountryCode.value];
+        let toCountry = countryList[toCountryCode.value];
+
+        let formattedFromNumber = parseFloat(amountValue);
+        formattedFromNumber = formattedFromNumber.toLocaleString(`en-${fromCountry}`, {maximumFractionDigits: 2 });
+
+        let exchangeRate = data.conversion_rates[toCountryCode.value];
+        let totalExchangeValue = parseFloat(amountValue * exchangeRate);
+        let formattedToNumber = totalExchangeValue.toLocaleString(`en-${toCountry}`, {maximumFractionDigits: 2 });
+        
+        conversionMassage.innerText = `${formattedFromNumber} ${fromCountryCode.value} = ${formattedToNumber} ${toCountryCode.value}`;
+        massage = conversionMassage.innerText;
+        getPreviousMassageCurrencytype();
+    }
+    else if(fromPart != newFromCountryCodeValue){
         fetch(apiUrl).then(response => response.json()).then(result => {
+            data = result;
+            console.log("fetching data...");
             let fromCountry = countryList[fromCountryCode.value];
             let toCountry = countryList[toCountryCode.value];
             
@@ -163,7 +196,6 @@ document.addEventListener('keydown', function(event) {
                 button.disabled = true;
             }
         });
-        getExchangeRate();
         setTimeout(() => {
             buttons.forEach(function (button) {
                 if (button.id !== submitBtn) {
